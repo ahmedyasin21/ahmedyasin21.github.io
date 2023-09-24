@@ -286,6 +286,7 @@
             </div>
         </div>
         <div class="links">
+            <a href="https://www.linkedin.com/in/ahmedyasin/" target="_blank">LinkedIn: Ahmed Yasin</a>
             <a href="https://www.upwork.com/freelancers/~018f7556411a5cd1a0" target="_blank">Upwork: Ahmed Yasin</a>
             <a href="https://github.com/ahmedyasin21" target="_blank">Github: Ahmed Yasin</a>
             <a href="https://stackoverflow.com/users/14472762/ahmed-yasin" target="_blank">Slack OverFlow: Ahmed Yasin</a>
@@ -389,10 +390,19 @@
             <div class="form-group">
                 <textarea name="message" placeholder="Your Message" required></textarea>
             </div>
-            <button type="submit" class="contact-button">Send Message</button>
+            <button type="submit" class="contact-button" id="submit-button">
+                <span id="button-text">Send Message</span>
+                <div class="loader" id="loader"></div>
+            </button>
+            
             <button type="button" class="instant-reach-button contact-button">Instant Reach</button>
             <div class="phone-number" style="display:none;">Phone Number : +923091422805</div>
         </form>
+         <!-- Success and error messages -->
+         
+         <div id="success-message" class="message success">Message sent successfully! </div>
+         <div id="error-message" class="message error">Error sending message. Please try again later.</div>
+    
     </div>
 </section>
 
@@ -459,6 +469,60 @@
             });
         });
     </script>
+
+<script>
+ document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = document.getElementsByName('name')[0].value;
+    var email = document.getElementsByName('email')[0].value;
+    var message = document.getElementsByName('message')[0].value;
+
+    var formData = {
+        name: name,
+        email: email,
+        message: message
+    };
+
+    // Disable the button and show loader
+    document.getElementById('submit-button').setAttribute('disabled', 'true');
+    document.getElementById('loader').style.display = 'inline-block';
+    document.getElementById('button-text').style.display = 'none';
+
+    fetch('https://api.meidan.pk/v1/support/pcontactus/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.status === 201) {
+            // Reset the form
+            document.getElementById('contact-form').reset();
+
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+        } else {
+            // Show error message
+            document.getElementById('error-message').style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+        }
+    })
+    .catch(error => console.error('Error:', error))
+    .finally(() => {
+        // Enable the button and hide loader
+        document.getElementById('submit-button').removeAttribute('disabled');
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('button-text').style.display = 'inline';
+    });
+});
+
+
+    </script>
+    
+    
 </body>
 
 </html>

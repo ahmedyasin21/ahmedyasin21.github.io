@@ -518,6 +518,47 @@ textarea {
 }
 
 
+/* Add these styles to your CSS */
+.message {
+    display: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.error {
+    background-color: #f44336;
+    color: #fff;
+}
+
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #007bff; /* Change to your desired loader color */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: none; /* Initially hide the loader */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Disable the button while loading */
+.contact-button[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 /* Footer Section Styles */
 .footer {
     background-color: #333;
