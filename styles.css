@@ -87,7 +87,7 @@ body {
 
 .hero::before {
     content: "";
-    background-image: url('image.png'); /* Replace with your actual image path */
+    background-image: url('media/image.png'); /* Replace with your actual image path */
     background-size: cover;
     filter: blur(8px); /* Adjust the blur effect as needed */
     position: absolute;
