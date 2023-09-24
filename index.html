@@ -375,34 +375,10 @@
     </div>
 </section>
 
-
-<!-- Section 6: Contact -->
 <section class="contact" id="contact">
     <div class="container">
-        <h2>Contact Me</h2>
-        <form id="contact-form">
-            <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="contact-button" id="submit-button">
-                <span id="button-text">Send Message</span>
-                <div class="loader" id="loader"></div>
-            </button>
-            
-            <button type="button" class="instant-reach-button contact-button">Instant Reach</button>
-            <div class="phone-number" style="display:none;">Phone Number : +923091422805</div>
-        </form>
-         <!-- Success and error messages -->
-         
-         <div id="success-message" class="message success">Message sent successfully! </div>
-         <div id="error-message" class="message error">Error sending message. Please try again later.</div>
-    
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScRX5AzhhVa015tMoE7XcqNCMhPzAe5qu8QBCPHBN4Pdk5xGg/viewform?embedded=true" width="640" height="720" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
     </div>
 </section>
 
@@ -470,58 +446,6 @@
         });
     </script>
 
-<script>
- document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var name = document.getElementsByName('name')[0].value;
-    var email = document.getElementsByName('email')[0].value;
-    var message = document.getElementsByName('message')[0].value;
-
-    var formData = {
-        name: name,
-        email: email,
-        message: message
-    };
-
-    // Disable the button and show loader
-    document.getElementById('submit-button').setAttribute('disabled', 'true');
-    document.getElementById('loader').style.display = 'inline-block';
-    document.getElementById('button-text').style.display = 'none';
-
-    fetch('https://api.meidan.pk/v1/support/pcontactus/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        if (response.status === 201) {
-            // Reset the form
-            document.getElementById('contact-form').reset();
-
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-            document.getElementById('error-message').style.display = 'none';
-        } else {
-            // Show error message
-            document.getElementById('error-message').style.display = 'block';
-            document.getElementById('success-message').style.display = 'none';
-        }
-    })
-    .catch(error => console.error('Error:', error))
-    .finally(() => {
-        // Enable the button and hide loader
-        document.getElementById('submit-button').removeAttribute('disabled');
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('button-text').style.display = 'inline';
-    });
-});
-
-
-    </script>
-    
     
 </body>
 
