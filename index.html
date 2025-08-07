@@ -1,796 +1,520 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ahmed Hassan Yaseen – CV</title>
-  <style>
-    /* ----------------------------------
-    Global Styles & Fonts
-    -----------------------------------*/
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-
-    :root {
-      --primary-font: 'Inter', sans-serif;
-      --primary-color: #2c3e50; /* Dark Charcoal */
-      --secondary-color: #34495e; /* Midnight Blue */
-      --light-text-color: #7f8c8d; /* Grayish Blue */
-      --accent-teal: #1abc9c; /* Bright Teal */
-      --light-gray-bg: #ecf0f1; /* Light Gray */
-      --border-gray: #e0e0e0;
-    }
-
-    body {
-      font-family: var(--primary-font);
-      color: var(--secondary-color);
-      margin: 0;
-      padding: 0;
-      background-color: var(--light-gray-bg);
-      line-height: 1.6;
-    }
-
-    .cv-container {
-      max-width: 900px;
-      margin: 20px auto;
-      background: #ffffff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* ----------------------------------
-    Header Section
-    -----------------------------------*/
-    .header {
-        position: relative;
-        padding: 60px;
-        background-image: linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%);
-        display: flex;
-        align-items: center;
-        gap: 40px;
-    }
-    
-    .header::before {
-        content: '';
-        position: absolute;
-        bottom: -20px;
-        left: -20px;
-        width: 120px;
-        height: 120px;
-        background: var(--accent-teal);
-        border-radius: 12px;
-        transform: rotate(45deg) skew(-10deg);
-        opacity: 0.6;
-        z-index: 1;
-    }
-    
-    .profile-image-container {
-        position: relative;
-        width: 160px;
-        height: 160px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 4px solid var(--accent-teal);
-        z-index: 10;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-    .profile-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .name-contact-section {
-        flex-grow: 1;
-        z-index: 10;
-    }
-
-    .name-section h1 {
-        font-family: var(--primary-font);
-        margin: 0;
-        line-height: 1.1;
-    }
-    .name-section h1 .first-name {
-        font-size: 2.8rem;
-        font-weight: 400;
-        color: var(--light-text-color);
-        display: inline;
-    }
-    .name-section h1 .other-names {
-        font-size: 3.8rem;
-        font-weight: 700;
-        display: inline;
-    }
-    
-    .name-section .job-title {
-        font-family: var(--primary-font);
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--primary-color);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: 5px;
-    }
-    
-    .contact-section-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 25px;
-        margin-top: 20px;
-    }
-    
-    .contact-info-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.95rem;
-        color: var(--light-text-color);
-        transition: color 0.3s;
-    }
-    
-    .contact-info-item:hover {
-        color: var(--accent-teal);
-    }
-
-    .contact-info-item i {
-        color: var(--accent-teal);
-        font-size: 1.1em;
-    }
-
-    .contact-info-item a {
-        color: inherit;
-        text-decoration: none;
-    }
-    
-    /* ----------------------------------
-    Main Content Section (Updated)
-    -----------------------------------*/
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      padding: 0 60px 60px;
-      gap: 40px;
-    }
-    
-    .section-title {
-      font-family: var(--primary-font);
-      font-size: 1.3rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--primary-color);
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    
-    .section-title::before {
-        content: '';
-        position: absolute;
-        left: -20px;
-        top: 0;
-        width: 6px;
-        height: 100%;
-        background-color: var(--accent-teal);
-        border-radius: 3px;
-    }
-    
-    .profile-description {
-        font-size: 0.95rem;
-        color: var(--light-text-color);
-    }
-
-    .experience-item, .education-item, .projects-item, .cert-item, .awards-item {
-      margin-bottom: 30px;
-    }
-    
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-
-    .item-title {
-      font-family: var(--primary-font);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin: 0;
-    }
-    
-    .item-subtitle {
-        font-size: 1rem;
-        color: var(--light-text-color);
-        margin: 5px 0;
-    }
-    
-    .item-meta {
-        font-size: 0.9rem;
-        color: var(--light-text-color);
-        margin: 5px 0;
-    }
-
-    .item-dates {
-      font-family: var(--primary-font);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--light-text-color);
-    }
-    
-    .item-description {
-        margin-top: 10px;
-        font-size: 0.95rem;
-        color: var(--light-text-color);
-    }
-    
-    .item-description p {
-        margin: 0;
-    }
-    
-    .item-description ul {
-        list-style-type: disc;
-        padding-left: 20px;
-        margin-top: 10px;
-        font-size: 0.95rem;
-        color: var(--light-text-color);
-    }
-    
-    .item-description li {
-        margin-bottom: 5px;
-    }
-
-    /* Skills and Languages badge styles */
-    .skills-container, .languages-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    
-    .skill-badge, .language-badge {
-        display: inline-block;
-        background-color: var(--light-gray-bg);
-        color: var(--primary-color);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    .skill-badge:hover, .language-badge:hover {
-        background-color: var(--accent-teal);
-        color: #ffffff;
-    }
-    .skills-category-group {
-        margin-bottom: 20px;
-    }
-    
-    .skills-category-group h4 {
-        margin: 0;
-        font-size: 1rem;
-        color: var(--secondary-color);
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    /* Certifications icon styling */
-    .cert-item i {
-      color: var(--accent-teal);
-      margin-right: 10px;
-      font-size: 1em;
-    }
-    .cert-item h4 {
-      display: inline-block;
-      margin: 0;
-      font-family: var(--primary-font);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-color);
-    }
-    .cert-item .item-subtitle {
-        margin-left: 30px;
-    }
-    .cert-item .item-header {
-        align-items: center;
-    }
-
-    .recommendations-list {
-        list-style: none;
-        padding-left: 0;
-    }
-    
-    .recommendations-list li {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-gray);
-      line-height: 1.4;
-    }
-
-    .recommendations-list li:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .recommendations-list li strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 1.1em;
-      color: var(--primary-color);
-    }
-
-    .final-message-container {
-      padding: 40px 60px;
-      background-image: linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%);
-      text-align: center;
-      border-top: 1px solid var(--border-gray);
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-    }
-    
-    .final-message-container p {
-      margin: 0;
-      font-style: italic;
-      color: var(--secondary-color);
-      font-size: 1.1rem;
-    }
-    
-    .project-list-item {
-        margin-top: 10px;
-    }
-    
-    .cert-item h4 {
-        margin: 0;
-    }
-
-    /* ----------------------------------
-    Responsive Design
-    -----------------------------------*/
-    @media (max-width: 768px) {
-      .cv-container {
-        margin: 0;
-        border-radius: 0;
-      }
-      .header {
-        padding: 30px;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-      .name-contact-section {
-          text-align: center;
-      }
-      .name-section h1 .first-name,
-      .name-section h1 .other-names {
-          display: block;
-      }
-      .contact-section-container {
-        justify-content: center;
-        gap: 15px;
-      }
-      .profile-summary-section, .full-width-section, .final-message-container {
-        padding: 20px;
-      }
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-      }
-      .section-title::before {
-          left: -10px;
-      }
-      .final-message {
-        padding: 20px;
-      }
-    }
-
-    /* ----------------------------------
-    Print Styles
-    -----------------------------------*/
-    @media print {
-      body {
-        background-color: #fff;
-        margin: 0;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        counter-reset: page 1;
-      }
-      .cv-container {
-        box-shadow: none;
-        border-radius: 0;
-        margin: 0;
-        background: none;
-      }
-      @page {
-        size: A4;
-        margin: 20mm;
-      }
-      
-      .main-content > section, .main-content > div {
-        page-break-inside: avoid;
-      }
-
-      .page-number::after {
-        content: "Page " counter(page);
-        counter-increment: page;
-        position: fixed;
-        bottom: 10mm;
-        right: 20mm;
-        font-size: 1rem;
-        color: var(--light-text-color);
-      }
-      
-      .main-content {
-        padding-top: 0; /* Remove top padding to let content flow */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Hassan Yaseen - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom Font: Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
 </head>
-<body>
-
-  <div class="cv-container">
+<body class="bg-slate-50 text-slate-800">
     
-    <header class="header">
-        <div class="profile-image-container">
-            <img id="profile-img" class="profile-image" alt="Profile Photo" src="https://media.licdn.com/dms/image/v2/D4D03AQE4vjeemM3mvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731276764604?e=1757548800&v=beta&t=0Nu6iiY9hSX-hSooiXkGIoquFEVqDK0D5ct0lsi-Nss" />
+    <!-- Fixed Left-Side Navigation -->
+    <nav class="fixed top-0 left-0 h-full w-64 bg-slate-800 text-white p-6 shadow-2xl overflow-y-auto hidden lg:block">
+        <div class="flex flex-col items-center mb-10">
+            <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-teal-400">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQE4vjeemM3mvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731276764604?e=1757548800&v=beta&t=0Nu6iiY9hSX-hSooiXkGIoquFEVqDK0D5ct0lsi-Nss" alt="Profile" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-xl font-bold text-teal-400 mt-4">Ahmed Yaseen</h3>
+            <p class="text-xs text-slate-400 uppercase tracking-wide">AI Software Engineer</p>
         </div>
-        <div class="name-contact-section">
-            <div class="name-section">
-                <h1>
-                  <span class="first-name">Ahmed</span>
-                  <span class="other-names">Hassan Yaseen</span>
+        
+        <ul class="space-y-4">
+            <li>
+                <a href="#profile-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-user-circle text-xl"></i>
+                    <span class="text-lg font-medium">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#skills-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-cogs text-xl"></i>
+                    <span class="text-lg font-medium">Skills</span>
+                </a>
+            </li>
+            <li>
+                <a href="#experience-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-briefcase text-xl"></i>
+                    <span class="text-lg font-medium">Experience</span>
+                </a>
+            </li>
+            <li>
+                <a href="#projects-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-project-diagram text-xl"></i>
+                    <span class="text-lg font-medium">Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="#education-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-graduation-cap text-xl"></i>
+                    <span class="text-lg font-medium">Education</span>
+                </a>
+            </li>
+            <li>
+                <a href="#certifications-awards-languages" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-award text-xl"></i>
+                    <span class="text-lg font-medium">Certificates & Awards</span>
+                </a>
+            </li>
+            <li>
+                <a href="#recommendations-section" class="flex items-center space-x-3 text-slate-300 hover:text-teal-400 transition-colors duration-200">
+                    <i class="fas fa-star text-xl"></i>
+                    <span class="text-lg font-medium">Recommendations</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <!-- The classes `max-w-6xl` and `mx-auto` were removed to allow the content to fill the screen width -->
+    <div class="p-4 sm:p-6 lg:p-8 lg:ml-64">
+        
+        <!-- Header Section -->
+        <header class="relative flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-8 bg-slate-100 p-8 sm:p-12 rounded-xl shadow-lg mb-12 overflow-hidden">
+            <!-- Decorative Element -->
+            <div class="absolute bottom-[-50px] left-[-50px] w-48 h-48 bg-teal-400 rounded-full opacity-30 transform rotate-45 -skew-x-12 z-0"></div>
+            
+            <!-- Profile Image Container -->
+            <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-teal-500 shadow-xl z-10">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQE4vjeemM3mvQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1731276764604?e=1757548800&v=beta&t=0Nu6iiY9hSX-hSooiXkGIoquFEVqDK0D5ct0lsi-Nss" alt="Ahmed Hassan Yaseen" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Name and Contact Info -->
+            <div class="flex-grow flex flex-col items-center sm:items-start z-10 text-center sm:text-left">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                    <span class="font-normal text-slate-500">Ahmed</span> Hassan Yaseen
                 </h1>
-                <div class="job-title">AI Software Engineer | Full-Stack Developer</div>
+                <h2 class="text-lg sm:text-xl font-medium text-slate-600 uppercase tracking-widest mt-2">
+                    AI Software Engineer | Full-Stack Developer
+                </h2>
+                
+                <!-- Contact Badges -->
+                <div class="flex flex-wrap justify-center sm:justify-start gap-4 mt-6">
+                    <a href="tel:+923091422805" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition-colors">
+                        <i class="fas fa-phone text-teal-500"></i>
+                        <span>PK: +92 309 1422805</span>
+                    </a>
+                    <a href="tel:+12027738131" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition-colors">
+                        <i class="fas fa-phone text-teal-500"></i>
+                        <span>US: +1 202 7738131</span>
+                    </a>
+                    <a href="mailto:ahmedyasin.social@gmail.com" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition-colors">
+                        <i class="fas fa-envelope text-teal-500"></i>
+                        <span>ahmedyasin.social@gmail.com</span>
+                    </a>
+                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                        <i class="fas fa-map-marker-alt text-teal-500"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                    <a href="https://ahmedyasin21.github.io" target="_blank" class="flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 transition-colors">
+                        <i class="fas fa-globe text-teal-500"></i>
+                        <span>https://ahmedyasin21.github.io</span>
+                    </a>
+                </div>
             </div>
-            <div id="contact-info" class="contact-section-container">
-                <div class="contact-info-item"><i class="fas fa-phone"></i>PK<span>+92 309 1422805</span></div>
-                <div class="contact-info-item"><i class="fas fa-phone"></i>US<span>+1 202 7738131</span></div>
-                <div class="contact-info-item"><i class="fas fa-envelope"></i><a href="mailto:ahmed.yaseen@email.com">ahmedyasin.social@gmail.com</a></div>
-                <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><span>Lahore, Pakistan</span></div>
-                <div class="contact-info-item"><i class="fas fa-globe"></i><a href="https://ahmedyasin21.github.io" target="_blank">https://ahmedyasin21.github.io</a></div>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="main-content">
-      <section id="profile-section" class="profile-summary-section">
-        <h2 class="section-title">Profile</h2>
-        <p id="profile-text" class="profile-description">A results-driven Full-Stack Developer with 5+ years of experience in building and deploying scalable, efficient solutions. I specialize in architecting end-to-end systems, from robust backend services to intuitive front-end interfaces. My expertise extends to building autonomous systems and automation agents using no-code tools and custom scripts, with a strong focus on optimizing workflows and delivering tangible business value. I thrive on solving complex problems and have a proven track record of successfully delivering global projects.</p>
-      </section>
-      
-      <section class="section" id="skills-section">
-          <h2 class="section-title">Skills</h2>
-          <div id="skills-list">
-              <div class="skills-category-group">
-                  <h4>Full-Stack Development</h4>
-                  <div class="skills-container">
-                      <span class="skill-badge">Python</span>
-                      <span class="skill-badge">Django</span>
-                      <span class="skill-badge">Django REST Framework</span>
-                      <span class="skill-badge">React.js</span>
-                      <span class="skill-badge">JavaScript</span>
-                      <span class="skill-badge">HTML</span>
-                      <span class="skill-badge">CSS</span>
-                      <span class="skill-badge">PostgreSQL</span>
-                      <span class="skill-badge">Flask</span>
-                  </div>
-              </div>
-              <div class="skills-category-group">
-                  <h4>AI & Automation</h4>
-                  <div class="skills-container">
-                      <span class="skill-badge">n8n</span>
-                      <span class="skill-badge">Make.com (formerly Integromat)</span>
-                      <span class="skill-badge">GoHighLevel (GHL)</span>
-                      <span class="skill-badge">Retell AI</span>
-                      <span class="skill-badge">Clay</span>
-                      <span class="skill-badge">Web Scraping (Selenium, Playwright)</span>
-                      <span class="skill-badge">Automation Scripts</span>
-                      <span class="skill-badge">Langchain</span>
-                      <span class="skill-badge">MCP & A2A & Vertex AI</span>
-                  </div>
-              </div>
-              <div class="skills-category-group">
-                  <h4>Mobile & Other Technologies</h4>
-                  <div class="skills-container">
-                      <span class="skill-badge">React Native</span>
-                      <span class="skill-badge">Cross-Platform Development</span>
-                      <span class="skill-badge">WebSockets</span>
-                  </div>
-              </div>
-          </div>
-      </section>
+        <!-- Main Content Area -->
+        <main class="flex flex-col gap-12">
+            
+            <!-- Profile Summary Section -->
+            <section id="profile-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-6">Profile</h2>
+                <p class="text-base text-slate-600">A results-driven Full-Stack Developer with 5+ years of experience in building and deploying scalable, efficient solutions. I specialize in architecting end-to-end systems, from robust backend services to intuitive front-end interfaces. My expertise extends to building autonomous systems and automation agents using no-code tools and custom scripts, with a strong focus on optimizing workflows and delivering tangible business value. I thrive on solving complex problems and have a proven track record of successfully delivering global projects.</p>
+            </section>
 
-      <section class="section" id="experience-section">
-        <h2 class="section-title">Experience</h2>
-        <div id="experience-list">
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">AI Software Engineer</h3>
-                    <span class="item-dates">Mar 2025 - Present</span>
+            <!-- Skills Section -->
+            <section id="skills-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-6">Skills</h2>
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-slate-700 mb-3">Full-Stack Development</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Django</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Django REST Framework</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">React.js</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">HTML</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">CSS</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">PostgreSQL</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Flask</span>
+                          </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-slate-700 mb-3">AI & Automation</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">n8n</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Make.com (formerly Integromat)</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">GoHighLevel (GHL)</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Retell AI</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Clay</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Web Scraping (Selenium, Playwright)</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Automation Scripts</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Langchain</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">MCP & A2A & Vertex AI</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-slate-700 mb-3">Mobile & Other Technologies</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">React Native</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Cross-Platform Development</span>
+                            <span class="skill-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">WebSockets</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="item-subtitle">ID Privacy AI | United States · Remote</div>
-                <div class="item-description">
-                    <p>Architecting and deploying inbound and outbound AI agents using a multi-stack approach. Key technologies include Python, Django, and Langchain for robust backend logic, and leveraging no-code platforms such as n8n, GHL, and Retell AI to build and optimize automated workflows. Managing and integrating knowledge bases to enhance agent performance and efficiency.</p>
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Python Developer</h3>
-                    <span class="item-dates">Feb 2025 - Jul 2025</span>
-                </div>
-                <div class="item-subtitle">Zweidevs (Pvt) Ltd | Lahore, Punjab, Pakistan · Hybrid</div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Full Stack Engineer</h3>
-                    <span class="item-dates">Oct 2024 - Jan 2025</span>
-                </div>
-                <div class="item-subtitle">VALUEANS | United States · Remote</div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Full-stack Developer</h3>
-                    <span class="item-dates">Jan 2023 - Oct 2024</span>
-                </div>
-                <div class="item-subtitle">Upwork | Lahore, Pakistan</div>
-                <div class="item-description">
-                    <p>Led and delivered numerous projects as a top-rated developer on Upwork with a 100% job success rate. Orchestrated the full development lifecycle for high-impact applications, including 'Pulse' (a unique mobile app) and 'EZ Language' (a powerful translation tool). Automated data retrieval by architecting and deploying efficient web scraping scripts, consistently delivering high-quality and on-time results for clients.</p>
-                </div>
-                <div class="item-description">
-                    <h4>Delivered Projects:</h4>
-                    <ul>
-                        <li>Pulse.</li>
-                        <li>EZ Language</li>
-                        <li>Twitter Automation Script.</li>
-                        <li>Walmart Data Scrapper.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Senior Software Engineer</h3>
-                    <span class="item-dates">Feb 2022 - Apr 2024</span>
-                </div>
-                <div class="item-subtitle">Quantum Bases | Lahore, Pakistan</div>
-                <div class="item-description">
-                    <p>Promoted to Senior Software Engineer for outstanding performance. Architected and developed a comprehensive ecosystem of applications, including user and merchant mobile apps, a CRM panel, and an admin panel. Designed and implemented the entire database architecture using PostgreSQL, ensuring scalability and robust performance across all platforms.</p>
-                </div>
-                <div class="item-description">
-                    <h4>Delivered Projects:</h4>
-                    <ul>
-                        <li>Meidan User Mobile App</li>
-                        <li>CRM Panel</li>
-                        <li>Admin Panel</li>
-                        <li>Meidan Merchant App.</li>
-                    </ul>
-                </div>
-                <div class="item-description">
-                    <ul>
-                        <li>Developed user-side mobile Application and merchant-side mobile Application using React native, Django, Python, and Javascript.</li>
-                        <li>Implemented the Postgresql for database, and designed the database architecture.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Python Engineer</h3>
-                    <span class="item-dates">Feb 2022 - Jan 2023</span>
-                </div>
-                <div class="item-subtitle">Crowdbotics | Berkeley, United States</div>
-                <div class="item-description">
-                    <h4>Delivered Projects:</h4>
-                    <ul>
-                        <li>Pulse Back-end Optimization.</li>
-                        <li>Pulse back-end Enhancement.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="experience-item">
-                <div class="item-header">
-                    <h3 class="item-title">Full Stack Engineer</h3>
-                    <span class="item-dates">Oct 2020 - Feb 2022</span>
-                </div>
-                <div class="item-subtitle">Nugenesis | Sydney, Australia</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Developed multi-project Notification web-app with android, iOS, and web SDKs for projects suchs as Nucoin, NFTcity, Nucoin.exchange, and Nucoin mob-app.</li>
-                        <li>Developed TestAway, a testing platform designed for businesses to test their complete platform with a single click, using technologies such as Django, Django RESTframework, Selenium, Pytest, Reactjs.</li>
-                        <li>Developed Notification Plugin - SDK - Dedicated Admin Panel.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-      </section>
+            </section>
 
-      <section class="section" id="projects-section">
-          <h2 class="section-title">Projects</h2>
-          <div id="projects-list">
-              <div class="projects-item">
-                  <div class="item-header">
-                      <h3 class="item-title">Quantum Bases, Meidan</h3>
-                      <span class="item-dates">Feb 2023 - Aug 2023</span>
-                  </div>
-                  <div class="item-subtitle">Lahore, Pakistan</div>
-                  <div class="item-meta"><a href="Link" target="_blank">View Project</a></div>
-                  <div class="item-description">
-                      <ul>
-                          <li>Backend: Architected and built RESTful APIs using Python/Django, optimizing database performance.</li>
-                          <li>Frontend: Developed a responsive and user-centric UI with React JS, enhancing user experience and engagement.</li>
-                          <li>Deployment: Deployed scalable applications to cloud platforms, ensuring reliability and operational efficiency.</li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="projects-item">
-                  <div class="item-header">
-                      <h3 class="item-title">Nugenesis, NuCoin</h3>
-                      <span class="item-dates">Oct 2020 - Feb 2022</span>
-                  </div>
-                  <div class="item-subtitle">Bexley, Australia</div>
-                  <div class="item-meta"><a href="Link" target="_blank">View Project</a></div>
-                  <div class="item-description">
-                      <ul>
-                          <li>Token Development: Designed and implemented the NU Coin token, focusing on scalability and security features.</li>
-                          <li>Smart Contracts: Developed and deployed smart contracts on the blockchain to facilitate transactions and ensure transparency.</li>
-                          <li>Utility Developments: Developed all utilities for NuCoin.</li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="projects-item">
-                  <div class="item-header">
-                      <h3 class="item-title">Quantum Bases, Meidan User App</h3>
-                      <span class="item-dates">Jan 2023 - Sep 2023</span>
-                  </div>
-                  <div class="item-subtitle">Lahore, Pakistan</div>
-                  <div class="item-meta"><a href="Link" target="_blank">View Project</a></div>
-                  <div class="item-description">
-                      <ul>
-                          <li>Mobile App Development: Designed and developed the Meidan user mobile app for both iOS and Android platforms, ensuring a seamless user experience.</li>
-                          <li>User Interface: Created an intuitive and engaging UI, focusing on ease of navigation and accessibility for users.</li>
-                          <li>Integration: Integrated back-end services for real-time data synchronization and user authentication, enhancing app functionality.</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </section>
+            <!-- Experience Section -->
+            <section id="experience-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-8">Experience</h2>
+                <div class="space-y-8">
+                    <!-- Job 1 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">AI Software Engineer</h3>
+                                <div class="text-lg font-medium text-slate-600">ID Privacy AI | United States · Remote</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Mar 2025 - Present</span>
+                        </div>
+                        <p class="text-base text-slate-600">Architecting and deploying inbound and outbound AI agents using a multi-stack approach. Key technologies include Python, Django, and Langchain for robust backend logic, and leveraging no-code platforms such as n8n, GHL, and Retell AI to build and optimize automated workflows. Managing and integrating knowledge bases to enhance agent performance and efficiency.</p>
+                    </div>
+                    <!-- Job 2 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Python Developer</h3>
+                                <div class="text-lg font-medium text-slate-600">Zweidevs (Pvt) Ltd | Lahore, Punjab, Pakistan · Hybrid</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Feb 2025 - Jul 2025</span>
+                        </div>
+                    </div>
+                    <!-- Job 3 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Full Stack Engineer</h3>
+                                <div class="text-lg font-medium text-slate-600">VALUEANS | United States · Remote</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Oct 2024 - Jan 2025</span>
+                        </div>
+                    </div>
+                    <!-- Job 4 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Full-stack Developer</h3>
+                                <div class="text-lg font-medium text-slate-600">Upwork | Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Jan 2023 - Oct 2024</span>
+                        </div>
+                        <p class="text-base text-slate-600">Led and delivered numerous projects as a top-rated developer on Upwork with a 100% job success rate. Orchestrated the full development lifecycle for high-impact applications, including 'Pulse' (a unique mobile app) and 'EZ Language' (a powerful translation tool). Automated data retrieval by architecting and deploying efficient web scraping scripts, consistently delivering high-quality and on-time results for clients.</p>
+                        <ul class="list-disc list-inside text-sm text-slate-500 mt-4 space-y-1">
+                            <li>Pulse.</li>
+                            <li>EZ Language</li>
+                            <li>Twitter Automation Script.</li>
+                            <li>Walmart Data Scrapper.</li>
+                        </ul>
+                    </div>
+                    <!-- Job 5 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Senior Software Engineer</h3>
+                                <div class="text-lg font-medium text-slate-600">Quantum Bases | Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Feb 2022 - Apr 2024</span>
+                        </div>
+                        <p class="text-base text-slate-600">Promoted to Senior Software Engineer for outstanding performance. Architected and developed a comprehensive ecosystem of applications, including user and merchant mobile apps, a CRM panel, and an admin panel. Designed and implemented the entire database architecture using PostgreSQL, ensuring scalability and robust performance across all platforms.</p>
+                        <ul class="list-disc list-inside text-sm text-slate-500 mt-4 space-y-1">
+                            <li>Meidan User Mobile App</li>
+                            <li>CRM Panel</li>
+                            <li>Admin Panel</li>
+                            <li>Meidan Merchant App.</li>
+                        </ul>
+                        <ul class="list-disc list-inside text-sm text-slate-500 mt-4 space-y-1">
+                            <li>Developed user-side mobile Application and merchant-side mobile Application using React native, Django, Python, and Javascript.</li>
+                            <li>Implemented the Postgresql for database, and designed the database architecture.</li>
+                        </ul>
+                    </div>
+                    <!-- Job 6 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Python Engineer</h3>
+                                <div class="text-lg font-medium text-slate-600">Crowdbotics | Berkeley, United States</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Feb 2022 - Jan 2023</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 mt-4 space-y-1">
+                            <li>Pulse Back-end Optimization.</li>
+                            <li>Pulse back-end Enhancement.</li>
+                        </ul>
+                    </div>
+                    <!-- Job 7 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Full Stack Engineer</h3>
+                                <div class="text-lg font-medium text-slate-600">Nugenesis | Sydney, Australia</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Oct 2020 - Feb 2022</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 mt-4 space-y-1">
+                            <li>Developed multi-project Notification web-app with android, iOS, and web SDKs for projects suchs as Nucoin, NFTcity, Nucoin.exchange, and Nucoin mob-app.</li>
+                            <li>Developed TestAway, a testing platform designed for businesses to test their complete platform with a single click, using technologies such as Django, Django RESTframework, Selenium, Pytest, Reactjs.</li>
+                            <li>Developed Notification Plugin - SDK - Dedicated Admin Panel.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-      <section class="section" id="education-section">
-        <h2 class="section-title">Education</h2>
-        <div id="education-list">
-            <div class="education-item">
-                <div class="item-header">
-                    <h3 class="item-title">Bachelors in Computer Science</h3>
-                    <span class="item-dates">Sep 2020 - Jan 2025</span>
+            <!-- Projects Section -->
+            <section id="projects-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-8">Projects</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project 1 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Quantum Bases, Meidan</h3>
+                                <div class="text-lg font-medium text-slate-600">Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Feb 2023 - Aug 2023</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Backend: Architected and built RESTful APIs using Python/Django, optimizing database performance.</li>
+                            <li>Frontend: Developed a responsive and user-centric UI with React JS, enhancing user experience and engagement.</li>
+                            <li>Deployment: Deployed scalable applications to cloud platforms, ensuring reliability and operational efficiency.</li>
+                        </ul>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Nugenesis, NuCoin</h3>
+                                <div class="text-lg font-medium text-slate-600">Bexley, Australia</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Oct 2020 - Feb 2022</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Token Development: Designed and implemented the NU Coin token, focusing on scalability and security features.</li>
+                            <li>Smart Contracts: Developed and deployed smart contracts on the blockchain to facilitate transactions and ensure transparency.</li>
+                            <li>Utility Developments: Developed all utilities for NuCoin.</li>
+                        </ul>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Quantum Bases, Meidan User App</h3>
+                                <div class="text-lg font-medium text-slate-600">Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Jan 2023 - Sep 2023</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Mobile App Development: Designed and developed the Meidan user mobile app for both iOS and Android platforms, ensuring a seamless user experience.</li>
+                            <li>User Interface: Created an intuitive and engaging UI, focusing on ease of navigation and accessibility for users.</li>
+                            <li>Integration: Integrated back-end services for real-time data synchronization and user authentication, enhancing app functionality.</li>
+                        </ul>
+                    </div>
+                    <!-- Project 4 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Nugenesis, NFT City</h3>
+                                <div class="text-lg font-medium text-slate-600">Sydney, Australia</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Jul 2021 - Feb 2022</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>NFT Platform Development: Designed and built the NFT CITY platform for minting, buying, and selling non-fungible tokens.</li>
+                            <li>Smart Contract Implementation: Developed and deployed smart contracts to ensure secure transactions and ownership verification.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="item-subtitle">Virtual University of Pakistan | Lahore, Pakistan</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Bachelor of Science in Computer Science (BSCS) – Virtual University</li>
-                        <li>In-depth study of programming, data structures, and algorithms</li>
-                        <li>Focus on software development, web technologies, and database management</li>
-                        <li>Hands-on experience in system analysis, software engineering, and networking</li>
-                        <li>Strong foundation in computer science theory and practical application</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="education-item">
-                <div class="item-header">
-                    <h3 class="item-title">Intermediate in Computer Sciences</h3>
-                    <span class="item-dates">May 2017 - Aug 2019</span>
-                </div>
-                <div class="item-subtitle">Govt Islamia College | Lahore, Pakistan</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Intermediate in Computer Science (ICS) with Physics</li>
-                        <li>Comprehensive study in computer science fundamentals and programming basics</li>
-                        <li>Developed analytical and problem-solving skills through physics and mathematics</li>
-                        <li>Gained foundational knowledge in computing, algorithms, and technical principles</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="education-item">
-                <div class="item-header">
-                    <h3 class="item-title">Matriculation in Biology</h3>
-                    <span class="item-dates">Jun 2015 - May 2017</span>
-                </div>
-                <div class="item-subtitle">Govt Muslim League | Lahore, Pakistan</div>
-                <div class="item-meta">GPA: 80%</div>
-                <div class="item-description">
-                    <ul>
-                        <li>Matriculation with Biology and Computer Science</li>
-                        <li>Built a foundational understanding of biological sciences and computer basics</li>
-                        <li>Developed analytical skills through the study of life sciences and computing</li>
-                        <li>Gained an early introduction to programming and computational thinking</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-      </section>
+            </section>
 
-      <section class="section" id="certifications-section">
-          <h2 class="section-title">Certifications</h2>
-          <div id="certifications-list">
-              <div class="cert-item">
-                  <div class="item-header">
-                      <i class="fas fa-certificate"></i>
-                      <h4 class="item-title">Speak English Professionally</h4>
-                      <span class="item-dates">Feb 2023</span>
-                  </div>
-                  <div class="item-subtitle">Georgia Institute of Technology</div>
-              </div>
-              <div class="cert-item">
-                  <div class="item-header">
-                      <i class="fas fa-certificate"></i>
-                      <h4 class="item-title">Python Data Structures</h4>
-                      <span class="item-dates">Feb 2023</span>
-                  </div>
-                  <div class="item-subtitle">University of Michigan</div>
-              </div>
-              <div class="cert-item">
-                  <div class="item-header">
-                      <i class="fas fa-certificate"></i>
-                      <h4 class="item-title">Programming with Python</h4>
-                      <span class="item-dates">Feb 2023</span>
-                  </div>
-                  <div class="item-subtitle">Google</div>
-              </div>
-              <div class="cert-item">
-                  <div class="item-header">
-                      <i class="fas fa-certificate"></i>
-                      <h4 class="item-title">Programming with JavaScript</h4>
-                      <span class="item-dates">Feb 2023</span>
-                  </div>
-                  <div class="item-subtitle">Meta</div>
-              </div>
-          </div>
-      </section>
-      
-      <section class="section" id="awards-section">
-          <h2 class="section-title">Awards</h2>
-          <div id="awards-list">
-              <div class="awards-item">
-                  <div class="item-header">
-                      <h4 class="item-title">Senior Software Engineer</h4>
-                      <span class="item-dates">Feb 2024</span>
-                  </div>
-                  <div class="item-subtitle">by Quantum Bases</div>
-              </div>
-          </div>
-      </section>
-      
-      <section class="section" id="languages-section">
-          <h2 class="section-title">Languages</h2>
-          <div class="languages-list">
-              <span class="language-badge">English</span>
-              <span class="language-badge">Urdu</span>
-          </div>
-      </section>
+            <!-- Education Section -->
+            <section id="education-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-8">Education</h2>
+                <div class="space-y-8">
+                    <!-- Education 1 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Bachelors in Computer Science</h3>
+                                <div class="text-lg font-medium text-slate-600">Virtual University of Pakistan | Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Sep 2020 - Jan 2025</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Bachelor of Science in Computer Science (BSCS) – Virtual University</li>
+                            <li>In-depth study of programming, data structures, and algorithms</li>
+                            <li>Focus on software development, web technologies, and database management</li>
+                            <li>Hands-on experience in system analysis, software engineering, and networking</li>
+                            <li>Strong foundation in computer science theory and practical application</li>
+                        </ul>
+                    </div>
+                    <!-- Education 2 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Intermediate in Computer Sciences</h3>
+                                <div class="text-lg font-medium text-slate-600">Govt Islamia College | Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">May 2017 - Aug 2019</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Intermediate in Computer Science (ICS) with Physics</li>
+                            <li>Comprehensive study in computer science fundamentals and programming basics</li>
+                            <li>Developed analytical and problem-solving skills through physics and mathematics</li>
+                            <li>Gained foundational knowledge in computing, algorithms, and technical principles</li>
+                        </ul>
+                    </div>
+                    <!-- Education 3 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Matriculation in Biology</h3>
+                                <div class="text-lg font-medium text-slate-600">Govt Muslim League | Lahore, Pakistan</div>
+                            </div>
+                            <span class="text-sm text-slate-500 font-medium">Jun 2015 - May 2017</span>
+                        </div>
+                        <ul class="list-disc list-inside text-sm text-slate-500 space-y-1">
+                            <li>Matriculation with Biology and Computer Science</li>
+                            <li>Built a foundational understanding of biological sciences and computer basics</li>
+                            <li>Developed analytical skills through the study of life sciences and computing</li>
+                            <li>Gained an early introduction to programming and computational thinking</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-      <section class="full-width-section" id="recommendations-section">
-          <h2 class="section-title">Recommendations</h2>
-          <ul id="recommendations-list" class="recommendations-list">
-              <li>
-                  <strong>Hafiz Khurram</strong>
-                  <span>Ahmed is just outstanding developer with creative and problem solving skills</span>
-              </li>
-              <li>
-                  <strong>Fahad Aziz</strong>
-                  <span>I highly recommend Ahmed as a full-stack developer. His technical skills are exceptional, and he is a highly honest and intelligent individual. Any team would be fortunate to have him on onboard.</span>
-              </li>
-              <li>
-                  <strong>Aysha Ahmed</strong>
-                  <span>Ayesha's dedication to her work and willingness to learn new technologies set her apart from others. Overall, Ayesha's technical expertise, honesty, and work ethic make her an excellent candidate for any role in the tech industry. I strongly recommend her without any hesitation.</span>
-              </li>
-          </ul>
-      </section>
-
-      <div class="final-message-container">
-          <p>Thank you for your time and consideration. I am excited about the possibility of bringing my skills and experience to your team.</p>
-      </div>
+            <!-- Certifications, Awards, and Languages Section -->
+            <section id="certifications-awards-languages" class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Certifications -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-6">Certifications</h2>
+                        <div class="space-y-4">
+                            <!-- Cert 1 -->
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-certificate text-teal-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-base font-semibold text-slate-800">Speak English Professionally</h4>
+                                    <p class="text-sm text-slate-500">Georgia Institute of Technology</p>
+                                </div>
+                            </div>
+                            <!-- Cert 2 -->
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-certificate text-teal-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-base font-semibold text-slate-800">Python Data Structures</h4>
+                                    <p class="text-sm text-slate-500">University of Michigan</p>
+                                </div>
+                            </div>
+                            <!-- Cert 3 -->
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-certificate text-teal-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-base font-semibold text-slate-800">Programming with Python</h4>
+                                    <p class="text-sm text-slate-500">Google</p>
+                                </div>
+                            </div>
+                            <!-- Cert 4 -->
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-certificate text-teal-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-base font-semibold text-slate-800">Programming with JavaScript</h4>
+                                    <p class="text-sm text-slate-500">Meta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Awards and Languages -->
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-6">Awards</h2>
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-award text-teal-500 text-2xl mt-1"></i>
+                                <div>
+                                    <h4 class="text-base font-semibold text-slate-800">Senior Software Engineer</h4>
+                                    <p class="text-sm text-slate-500">by Quantum Bases - Feb 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-6">Languages</h2>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="language-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">English</span>
+                                <span class="language-badge bg-slate-100 text-slate-800 hover:bg-teal-500 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full text-sm font-medium">Urdu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Recommendations Section -->
+            <section id="recommendations-section" class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-4 mb-8">Recommendations</h2>
+                <div class="space-y-6">
+                    <!-- Recommendation 1 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <p class="italic text-slate-600">"Ahmed is just outstanding developer with creative and problem solving skills"</p>
+                        <p class="text-sm font-semibold text-slate-800 mt-2">
+                            <a href="https://www.linkedin.com/in/hafizkhurram" target="_blank" class="text-teal-600 hover:underline">Hafiz Khurram</a>
+                        </p>
+                    </div>
+                    <!-- Recommendation 2 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <p class="italic text-slate-600">"I highly recommend Ahmed as a full-stack developer. His technical skills are exceptional, and he is a highly honest and intelligent individual. Any team would be fortunate to have him on onboard."</p>
+                        <p class="text-sm font-semibold text-slate-800 mt-2">
+                            <a href="https://www.linkedin.com/in/fahad-aziz-4b696513a" target="_blank" class="text-teal-600 hover:underline">Fahad Aziz</a>
+                        </p>
+                    </div>
+                    <!-- Recommendation 3 -->
+                    <div class="p-6 bg-slate-50 rounded-lg border-l-4 border-teal-400">
+                        <p class="italic text-slate-600">"Ayesha's dedication to her work and willingness to learn new technologies set her apart from others. Overall, Ayesha's technical expertise, honesty, and work ethic make her an excellent candidate for any role in the tech industry. I strongly recommend her without any hesitation."</p>
+                        <p class="text-sm font-semibold text-slate-800 mt-2">
+                            <a href="https://www.linkedin.com/in/ayshazubair" target="_blank" class="text-teal-600 hover:underline">Aysha Ahmed</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 p-8 mt-12 bg-slate-100 rounded-xl shadow-lg">
+            <p class="italic">"Thank you for your time and consideration. I am excited about the possibility of bringing my skills and experience to your team."</p>
+        </footer>
     </div>
-
-  </div>
-
 </body>
 </html>
